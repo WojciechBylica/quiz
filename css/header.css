@@ -1,0 +1,7 @@
+.header {
+    background-color: black;
+    color: rgba(0, 128, 128, 0.541);
+    text-align: center;
+    padding: 20px;
+    text-shadow: 1px 1px 1px white;
+}

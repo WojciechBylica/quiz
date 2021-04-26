@@ -1,0 +1,53 @@
+.form {
+    padding: 20px 0px;
+}
+
+.form__fieldset {
+    border-radius: 15px;
+}
+
+.form__paragraph {
+    font-weight: bold;
+    text-align: left;
+    background-color: rgba(0, 128, 128, 0.541);
+    padding: 5px 20px;
+}
+
+.form__unorderedList {
+    padding-left: 0px;
+    padding: 0px 10px;
+}
+
+.form__unorderedList--item {
+    list-style-type: none;
+    text-align: left;
+}
+
+.form__button {
+    width: 70%;
+    padding: 20px;
+    font-size: 15px;
+    margin: 5px;
+    background-color: rgba(0, 128, 128, 0.541);
+    border: none;
+}
+
+.form__button:hover {
+    background-color: rgba(0, 128, 128, 0.692);
+}
+
+.form__button:focus {
+    background-color: rgba(0, 128, 128, 0.829);
+}
+
+.form__button:active {
+    background-color: rgb(0, 128, 128);
+}
+
+.form__input--showTrue {
+    background-color: rgba(14, 212, 14, 0.644);
+}
+
+.form__element--hidden {
+    display: none;
+}
