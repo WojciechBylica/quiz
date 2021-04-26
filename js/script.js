@@ -1,3 +1,78 @@
+let questionIndex = 1;
+let nextButton = document.querySelector(".js-nextButton");
+let sendButton = document.querySelector(".js-button__send");
+let answerButton = document.querySelector(".js-button__answer");
+
+let questionFirst = document.querySelector(".js-question__first");
+let questionSecond = document.querySelector(".js-question__second");
+let questionThird = document.querySelector(".js-question__third");
+let questionFourth = document.querySelector(".js-question__fourth");
+let questionFifth = document.querySelector(".js-question__fifth");
+let questionSixth = document.querySelector(".js-question__sixth");
+let questionSeventh = document.querySelector(".js-question__seventh");
+let questionEightth = document.querySelector(".js-question__eightth");
+let questionNineth = document.querySelector(".js-question__nineth");
+let questionTenth = document.querySelector(".js-question__tenth");
+
+nextButton.addEventListener("click", () => {
+
+    switch (questionIndex) {
+        case 1:
+            questionFirst.classList.add("form__element--hidden");
+            questionSecond.classList.remove("form__element--hidden");
+            questionIndex++;
+            break;
+        case 2:
+            questionSecond.classList.add("form__element--hidden");
+            questionThird.classList.remove("form__element--hidden");
+            questionIndex++;
+            break;
+        case 3:
+            questionThird.classList.add("form__element--hidden");
+            questionFourth.classList.remove("form__element--hidden");
+            questionIndex = questionIndex + 1;
+            break;
+        case 4:
+            questionFourth.classList.add("form__element--hidden");
+            questionFifth.classList.remove("form__element--hidden");
+            questionIndex++;
+            break;
+        case 5:
+            questionFifth.classList.add("form__element--hidden");
+            questionSixth.classList.remove("form__element--hidden");
+            questionIndex++;
+            break;
+        case 6:
+            questionSixth.classList.add("form__element--hidden");
+            questionSeventh.classList.remove("form__element--hidden");
+            questionIndex++;
+            break;
+        case 7:
+            questionSeventh.classList.add("form__element--hidden");
+            questionEightth.classList.remove("form__element--hidden");
+            questionIndex++;
+            break;
+        case 8:
+            questionEightth.classList.add("form__element--hidden");
+            questionNineth.classList.remove("form__element--hidden");
+            questionIndex++;
+            break;
+        case 9:
+            questionNineth.classList.add("form__element--hidden");
+            questionTenth.classList.remove("form__element--hidden");
+            sendButton.classList.remove("form__element--hidden");
+            nextButton.classList.add("form__element--hidden");
+            questionIndex++;
+            break;
+    }
+});
+
+sendButton.addEventListener("click", () => {
+    sendButton.classList.add("form__element--hidden");
+    nextButton.classList.add("form__element--hidden");
+    answerButton.classList.remove("form__element--hidden");
+});
+
 let q1True = document.querySelector(".js-q1__true");
 let q2True = document.querySelector(".js-q2__true");
 let q3True = document.querySelector(".js-q3__true");
@@ -10,48 +85,26 @@ let q9True = document.querySelector(".js-q9__true");
 let q10True = document.querySelector(".js-q10__true");
 
 let result = document.querySelector(".js-result");
-
 let form = document.querySelector(".js-form");
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    let True1 = 0;
-    q1True.checked = q1True.checked === true ? True1 = 1 : True1 = 0;
-
-    let True2 = 0;
-    q2True.checked = q2True.checked === true ? True2 = 1 : True2 = 0;
-
-    let True3 = 0;
-    q3True.checked = q3True.checked === true ? True3 = 1 : True3 = 0;
-
-    let True4 = 0;
-    q4True.checked = q4True.checked == true ? True4 = 1 : True4 = 0;
-
-    let True5 = 0;
-    q5True.checked = q5True.checked == true ? True5 = 1 : True5 = 0;
-
-    let True6 = 0;
-    q6True.checked = q6True.checked == true ? True6 = 1 : True6 = 0;
-
-    let True7 = 0;
-    q7True.checked = q7True.checked == true ? True7 = 1 : True7 = 0;
-
-    let True8 = 0;
-    q8True.checked = q8True.checked == true ? True8 = 1 : True8 = 0;
-
-    let True9 = 0;
-    q9True.checked = q9True.checked == true ? True9 = 1 : True9 = 0;
-
-    let True10 = 0;
-    q10True.checked = q10True.checked == true ? True10 = 1 : True10 = 0;
-
-    result.innerText = `${True1 + True2 + True3 + True4 + True5 + True6 + True7 + True8 + True9 + True10} /10 pkt.`;
+    let sum = (
+        q1True.checked +
+        q2True.checked +
+        q3True.checked +
+        q4True.checked +
+        q5True.checked +
+        q6True.checked +
+        q7True.checked +
+        q8True.checked +
+        q9True.checked +
+        q10True.checked
+    );
+    result.innerText = `${sum}/10 pkt.`;
 });
 
-
-
-let button__answer = document.querySelector(".js-button__answer");
 let formInputTrue = document.querySelector(".form__input--true");
 let formInputTrue2 = document.querySelector(".form__input--true2");
 let formInputTrue3 = document.querySelector(".form__input--true3");
@@ -63,7 +116,7 @@ let formInputTrue8 = document.querySelector(".form__input--true8");
 let formInputTrue9 = document.querySelector(".form__input--true9");
 let formInputTrue10 = document.querySelector(".form__input--true10");
 
-button__answer.addEventListener("click", () => {
+answerButton.addEventListener("click", () => {
     formInputTrue.classList.toggle("form__input--showTrue");
     formInputTrue2.classList.toggle("form__input--showTrue");
     formInputTrue3.classList.toggle("form__input--showTrue");
@@ -75,7 +128,18 @@ button__answer.addEventListener("click", () => {
     formInputTrue9.classList.toggle("form__input--showTrue");
     formInputTrue10.classList.toggle("form__input--showTrue");
 
-    button__answer.innerText = button__answer.innerText === "Podświetl prawidłowe odpowiedzi" ? "Ukryj podświetlenia" : "Podświetl prawidłowe odpowiedzi";
+    questionFirst.classList.remove("form__element--hidden");
+    questionSecond.classList.remove("form__element--hidden");
+    questionThird.classList.remove("form__element--hidden");
+    questionFourth.classList.remove("form__element--hidden");
+    questionFifth.classList.remove("form__element--hidden");
+    questionSixth.classList.remove("form__element--hidden");
+    questionSeventh.classList.remove("form__element--hidden");
+    questionEightth.classList.remove("form__element--hidden");
+    questionNineth.classList.remove("form__element--hidden");
+    questionTenth.classList.remove("form__element--hidden");
+
+    answerButton.innerText = answerButton.innerText === "Podświetl prawidłowe odpowiedzi" ? "Ukryj podświetlenia" : "Podświetl prawidłowe odpowiedzi";
 });
 
 let resetButton = document.querySelector(".js-reset__button")
@@ -93,5 +157,20 @@ resetButton.addEventListener("click", () => {
     formInputTrue9.classList.remove("form__input--showTrue");
     formInputTrue10.classList.remove("form__input--showTrue");
 
-    button__answer.innerText = "Podświetl prawidłowe odpowiedzi";
+    questionFirst.classList.remove("form__element--hidden");
+    questionSecond.classList.add("form__element--hidden");
+    questionThird.classList.add("form__element--hidden");
+    questionFourth.classList.add("form__element--hidden");
+    questionFifth.classList.add("form__element--hidden");
+    questionSixth.classList.add("form__element--hidden");
+    questionSeventh.classList.add("form__element--hidden");
+    questionEightth.classList.add("form__element--hidden");
+    questionNineth.classList.add("form__element--hidden");
+    questionTenth.classList.add("form__element--hidden");
+
+    nextButton.classList.remove("form__element--hidden");
+    sendButton.classList.add("form__element--hidden");
+    answerButton.classList.add("form__element--hidden");
+    answerButton.innerText = "Podświetl prawidłowe odpowiedzi";
+    questionIndex = 1;
 });
