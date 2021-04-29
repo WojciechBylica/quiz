@@ -2,4 +2,4 @@
 
 ## demo
 
-https://kynkyn-projects.github.io/quiz/
+ https://wojciechbylica.github.io/quiz/
