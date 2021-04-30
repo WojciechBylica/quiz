@@ -1,21 +1,20 @@
 let questionIndex = 1;
-let nextButton = document.querySelector(".js-nextButton");
-let sendButton = document.querySelector(".js-button__send");
-let answerButton = document.querySelector(".js-button__answer");
+const nextButton = document.querySelector(".js-nextButton");
+const sendButton = document.querySelector(".js-button__send");
+const answerButton = document.querySelector(".js-button__answer");
 
-let questionFirst = document.querySelector(".js-question__first");
-let questionSecond = document.querySelector(".js-question__second");
-let questionThird = document.querySelector(".js-question__third");
-let questionFourth = document.querySelector(".js-question__fourth");
-let questionFifth = document.querySelector(".js-question__fifth");
-let questionSixth = document.querySelector(".js-question__sixth");
-let questionSeventh = document.querySelector(".js-question__seventh");
-let questionEightth = document.querySelector(".js-question__eightth");
-let questionNineth = document.querySelector(".js-question__nineth");
-let questionTenth = document.querySelector(".js-question__tenth");
+const questionFirst = document.querySelector(".js-question__first");
+const questionSecond = document.querySelector(".js-question__second");
+const questionThird = document.querySelector(".js-question__third");
+const questionFourth = document.querySelector(".js-question__fourth");
+const questionFifth = document.querySelector(".js-question__fifth");
+const questionSixth = document.querySelector(".js-question__sixth");
+const questionSeventh = document.querySelector(".js-question__seventh");
+const questionEightth = document.querySelector(".js-question__eightth");
+const questionNineth = document.querySelector(".js-question__nineth");
+const questionTenth = document.querySelector(".js-question__tenth");
 
-nextButton.addEventListener("click", () => {
-
+const questionNumber = () => {
     switch (questionIndex) {
         case 1:
             questionFirst.classList.add("form__element--hidden");
@@ -30,7 +29,7 @@ nextButton.addEventListener("click", () => {
         case 3:
             questionThird.classList.add("form__element--hidden");
             questionFourth.classList.remove("form__element--hidden");
-            questionIndex = questionIndex + 1;
+            questionIndex++;
             break;
         case 4:
             questionFourth.classList.add("form__element--hidden");
@@ -65,32 +64,32 @@ nextButton.addEventListener("click", () => {
             questionIndex++;
             break;
     }
-});
+};
 
-sendButton.addEventListener("click", () => {
+const showSendButton = () => {
     sendButton.classList.add("form__element--hidden");
     nextButton.classList.add("form__element--hidden");
     answerButton.classList.remove("form__element--hidden");
-});
+}
 
-let q1True = document.querySelector(".js-q1__true");
-let q2True = document.querySelector(".js-q2__true");
-let q3True = document.querySelector(".js-q3__true");
-let q4True = document.querySelector(".js-q4__true");
-let q5True = document.querySelector(".js-q5__true");
-let q6True = document.querySelector(".js-q6__true");
-let q7True = document.querySelector(".js-q7__true");
-let q8True = document.querySelector(".js-q8__true");
-let q9True = document.querySelector(".js-q9__true");
-let q10True = document.querySelector(".js-q10__true");
+const q1True = document.querySelector(".js-q1__true");
+const q2True = document.querySelector(".js-q2__true");
+const q3True = document.querySelector(".js-q3__true");
+const q4True = document.querySelector(".js-q4__true");
+const q5True = document.querySelector(".js-q5__true");
+const q6True = document.querySelector(".js-q6__true");
+const q7True = document.querySelector(".js-q7__true");
+const q8True = document.querySelector(".js-q8__true");
+const q9True = document.querySelector(".js-q9__true");
+const q10True = document.querySelector(".js-q10__true");
 
-let result = document.querySelector(".js-result");
-let form = document.querySelector(".js-form");
+const result = document.querySelector(".js-result");
 
-form.addEventListener("submit", (event) => {
+
+const countGoodAnswers = (event) => {
     event.preventDefault();
 
-    let sum = (
+    const sum = (
         q1True.checked +
         q2True.checked +
         q3True.checked +
@@ -103,20 +102,20 @@ form.addEventListener("submit", (event) => {
         q10True.checked
     );
     result.innerText = `${sum}/10 pkt.`;
-});
+}
 
-let formInputTrue = document.querySelector(".form__input--true");
-let formInputTrue2 = document.querySelector(".form__input--true2");
-let formInputTrue3 = document.querySelector(".form__input--true3");
-let formInputTrue4 = document.querySelector(".form__input--true4");
-let formInputTrue5 = document.querySelector(".form__input--true5");
-let formInputTrue6 = document.querySelector(".form__input--true6");
-let formInputTrue7 = document.querySelector(".form__input--true7");
-let formInputTrue8 = document.querySelector(".form__input--true8");
-let formInputTrue9 = document.querySelector(".form__input--true9");
-let formInputTrue10 = document.querySelector(".form__input--true10");
+const formInputTrue = document.querySelector(".form__input--true");
+const formInputTrue2 = document.querySelector(".form__input--true2");
+const formInputTrue3 = document.querySelector(".form__input--true3");
+const formInputTrue4 = document.querySelector(".form__input--true4");
+const formInputTrue5 = document.querySelector(".form__input--true5");
+const formInputTrue6 = document.querySelector(".form__input--true6");
+const formInputTrue7 = document.querySelector(".form__input--true7");
+const formInputTrue8 = document.querySelector(".form__input--true8");
+const formInputTrue9 = document.querySelector(".form__input--true9");
+const formInputTrue10 = document.querySelector(".form__input--true10");
 
-answerButton.addEventListener("click", () => {
+const showGoodAnswers = () => {
     formInputTrue.classList.toggle("form__input--showTrue");
     formInputTrue2.classList.toggle("form__input--showTrue");
     formInputTrue3.classList.toggle("form__input--showTrue");
@@ -140,11 +139,11 @@ answerButton.addEventListener("click", () => {
     questionTenth.classList.remove("form__element--hidden");
 
     answerButton.innerText = answerButton.innerText === "Podświetl prawidłowe odpowiedzi" ? "Ukryj podświetlenia" : "Podświetl prawidłowe odpowiedzi";
-});
+}
 
-let resetButton = document.querySelector(".js-reset__button")
 
-resetButton.addEventListener("click", () => {
+
+const resetList = () => {
     result.innerText = "";
     formInputTrue.classList.remove("form__input--showTrue");
     formInputTrue2.classList.remove("form__input--showTrue");
@@ -173,4 +172,22 @@ resetButton.addEventListener("click", () => {
     answerButton.classList.add("form__element--hidden");
     answerButton.innerText = "Podświetl prawidłowe odpowiedzi";
     questionIndex = 1;
-});
+}
+
+
+
+const init = () => {
+    nextButton.addEventListener("click", questionNumber);
+
+    sendButton.addEventListener("click", showSendButton);
+
+    const form = document.querySelector(".js-form");
+    form.addEventListener("submit", countGoodAnswers);
+
+    answerButton.addEventListener("click", showGoodAnswers);
+
+    const resetButton = document.querySelector(".js-reset__button")
+    resetButton.addEventListener("click", resetList);
+}
+
+init();
